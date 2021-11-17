@@ -9,7 +9,7 @@ async function fetcher(url) {
   return res.json();
 }
 
-const Map = ({ location }) => {
+const Map = () => {
   const mapRef = useRef();
   const [viewport, setViewport] = useState("");
   const [selected, setSelected] = useState({});
@@ -22,15 +22,11 @@ const Map = ({ location }) => {
   if (!data)
     return (
       <div>
-        <Loader
-          type="ThreeDots"
-          color="#43E895"
-          height={100}
-          width={100}
-          timeout={2500}
-        />{" "}
+        <Loader type="ThreeDots" color="#43E895" height={100} width={100} timeout={2500}
+        />
       </div>
     );
+
   const { restaurants: newData } = data;
 
   useEffect(() => {
@@ -66,24 +62,29 @@ const Map = ({ location }) => {
             latitude={result.location.lat}
             offsetLeft={-12}
           >
-            <p className="cursor-pointer"
-                onClick={() => setSelected(result)}
-                aria-label="location-pin"
+            <p
+              className="cursor-pointer"
+              onClick={() => setSelected(result)}
+              aria-label="location-pin"
             >
               <LocationMarkerIcon className="h-6 text-primary animate-bounce" />
             </p>
           </Marker>
           {selected.name === result.name ? (
-              <Popup className="z-50"
+            <Popup
+              className="z-50"
               onClose={() => setSelected({})}
               closeOnClick={true}
               longitude={result.location.lng}
-              latitude={result.location.lat}>
-                  <div className="flex items-center gap-3 px-2">
-                      <p className="text-neutral font-semibold">{result.name}</p>
-                  </div>
-              </Popup>
-          ) : ( false )}
+              latitude={result.location.lat}
+            >
+              <div className="flex items-center gap-3 px-2">
+                <p className="text-neutral font-semibold">{result.name}</p>
+              </div>
+            </Popup>
+          ) : (
+            false
+          )}
         </div>
       ))}
     </ReactMapGL>

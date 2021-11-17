@@ -7,34 +7,36 @@ async function fetcher(url) {
   return res.json();
 }
 
-const Feed = () => {
-  const { data, error } = useSwr(
-    "https://s3.amazonaws.com/br-codingexams/restaurants.json",
-    fetcher
-  );
+const Feed = (props) => {
+  const url = "https://s3.amazonaws.com/br-codingexams/restaurants.json";
+  const { data, error } = useSwr(url, fetcher, {
+    initialData: props,
+    revalidateOnMount: true,
+  });
   if (error) return <div>failed to load</div>;
   if (!data)
     return (
-      <div>
+      <div className="h-screen flex items-center justify-center">
         <Loader
           type="ThreeDots"
           color="#43E895"
           height={100}
           width={100}
           timeout={2500}
-        />{" "}
+        />
       </div>
     );
-  const { restaurants: foodSpot } = data;
+
+  const { restaurants: spot } = data;
 
   return (
-    <main className="grid grid-cols-1 md:max-w-4xl mx-auto">
-      <section className="sm:pt-5 px-10 flex-grow mx-auto">
+    <main className="flex flex-col items-center max-w-3xl md:max-w-4xl xl:max-w-6xl mx-auto">
+      <section className="sm:pt-5">
         <h2 className="hidden sm:inline-flex sm:text-3xl font-semibolld pb-5">
           Restaurants
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
-          {foodSpot?.map(
+          {spot?.map(
             (
               { name, category, location, contact, backgroundImageURL: image },
               index
@@ -44,8 +46,7 @@ const Feed = () => {
                 name={name}
                 category={category}
                 location={location}
-                phone={contact?.formattedPhone}
-                twitter={contact?.twitter}
+                contact={contact}
                 image={image}
               />
             )
@@ -57,3 +58,16 @@ const Feed = () => {
 };
 
 export default Feed;
+
+export async function getStaticProps(context) {
+  const res = await fetch(
+    "https://s3.amazonaws.com/br-codingexams/restaurants.json"
+  );
+  const { spots } = await res.json();
+  console.log("yoooo", spots);
+  return {
+    props: {
+      restaurants,
+    },
+  };
+}
