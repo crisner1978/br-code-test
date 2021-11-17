@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ChevronLeftIcon } from "@heroicons/react/outline";
+import Image from "next/image";
 
 const Header = () => {
   return (

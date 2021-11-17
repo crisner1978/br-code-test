@@ -18,7 +18,9 @@ const DetailView = ({ category, contact, location, name, show }) => {
             {location.formattedAddress[1]}
           </p>
           <p className="mt-[26px]">{contact?.phone || "No phone listed"}</p>
-          <p className="mt-[26px]">{contact?.twitter ? `@${contact?.twitter}` : "Not listed"}</p>
+          <p className="mt-[26px]">
+            {contact?.twitter ? `@${contact?.twitter}` : "Not listed"}
+          </p>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
+import { LocationMarkerIcon } from "@heroicons/react/outline";
+import { getCenter } from "geolib";
 import { useEffect, useRef, useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import { getCenter } from "geolib";
 import useSWR from "swr";
-import { LocationMarkerIcon } from "@heroicons/react/outline";
 
 async function fetcher(url) {
   const res = await fetch(url);
@@ -22,7 +22,12 @@ const Map = () => {
   if (!data)
     return (
       <div>
-        <Loader type="ThreeDots" color="#43E895" height={100} width={100} timeout={2500}
+        <Loader
+          type="ThreeDots"
+          color="#43E895"
+          height={100}
+          width={100}
+          timeout={2500}
         />
       </div>
     );
