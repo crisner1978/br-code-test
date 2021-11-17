@@ -44,6 +44,7 @@ const ListView = ({ category, location, name, contact, image }) => {
                 location={location}
                 name={name}
                 contact={contact}
+                show={show}
               />
             </animated.div>
           )

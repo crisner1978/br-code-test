@@ -1,10 +1,10 @@
 import Map from "./Map";
 
-const DetailView = ({ category, location, name, contact }) => {
+const DetailView = ({ category, contact, location, name, show }) => {
   return (
     <div className="absolute bg-white top-[197px] z-10 w-96 pb-4 rounded-b-lg border-b shadow-sm">
       <div className="h-[180px] flex items-center justify-center bg-secondary -mt-2">
-        <Map />
+        <Map show={show} />
       </div>
       <div className="flex flex-col">
         <div className="pl-3 bg-secondary text-white h-[60px] justify-center">

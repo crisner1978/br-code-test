@@ -42,7 +42,7 @@ const Map = () => {
       height: "100%",
       latitude: center.latitude,
       longitude: center.longitude,
-      zoom: 14,
+      zoom: 12,
     });
     return () => coordinates;
   }, [newData]);
