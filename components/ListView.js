@@ -15,8 +15,9 @@ const ListView = ({ category, location, name, contact, image }) => {
   });
 
   return (
-    <div className="relative h-48 w-96 cursor-pointer">
+    <div className="relative h-48 w-screen sm:w-96 cursor-pointer">
       <Image
+        className="object-cover w-screen"
         src={image}
         layout="fill"
         objectFit="cover"

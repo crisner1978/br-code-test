@@ -30,12 +30,12 @@ const Feed = (props) => {
   const { restaurants: spot } = data;
 
   return (
-    <main className="flex flex-col items-center max-w-3xl md:max-w-4xl xl:max-w-6xl mx-auto">
+    <main className="flex flex-col items-center max-w-2xl md:max-w-4xl xl:max-w-6xl mx-auto">
       <section className="sm:pt-5">
         <h2 className="hidden sm:inline-flex sm:text-3xl font-semibolld pb-5">
           Restaurants
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
+        <div className="flex flex-col md:grid grid-cols-2 md:gap-x-10">
           {spot?.map(
             (
               { name, category, location, contact, backgroundImageURL: image },

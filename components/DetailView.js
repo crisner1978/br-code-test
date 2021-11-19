@@ -2,7 +2,7 @@ import Map from "./Map";
 
 const DetailView = ({ category, contact, location, name }) => {
   return (
-    <div className="absolute bg-white top-[197px] z-10 w-96 pb-4 rounded-b-lg border-b shadow-sm">
+    <div className="absolute bg-white top-[197px] z-10 w-screen sm:w-96 pb-4 rounded-b-lg border-b shadow-sm">
       <div className="h-[180px] flex items-center justify-center bg-secondary -mt-2">
         <Map location={location} name={name} />
       </div>
